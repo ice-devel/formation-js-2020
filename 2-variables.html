@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JS : variables</title>
+		<style>
+		</style>
+	</head>
+
+	<body>
+		<h1 style="">Variables JAVASCRIPT</h1>
+		
+		<p>Comme pour tout langage de programmation, le javascript peut utiliser des variables. Les types primitifs en JS sont :</p>
+		
+		<ul>
+			<li>Chaines de caractères (string)</li>
+			<li>Nombre (number) : entier + nombre à virgule flottant</li>
+			<li>Booléen (boolean)</li>
+		</ul>
+		
+		<p>Javascript : faiblement typé, on ne type pas les variables explicitement,
+		mais le langage le fait pour nous.</p>
+		
+		<script>
+			// déclaration (pas obligatoire)
+			var age;
+			
+			// initialisation
+			age = 25; // type number
+			console.log(age); // afficher dans la console la valeur
+			console.log(typeof age); // afficher le type
+			
+			age = "33";
+			console.log(age); // afficher dans la console la valeur
+			console.log(typeof age); // afficher le type
+			
+			// déclaration et initialisation sur la même ligne
+			var nom = "Kevin"; // type string
+			console.log(nom);
+			console.log(typeof nom);
+			
+			var isMajeur = true; // type boolean
+			console.log(isMajeur);
+			console.log(typeof isMajeur);
+			
+			// constante 
+			const TVA = 0.2;
+			
+			console.log(TVA);
+			console.log(typeof TVA);
+			
+			TVA = 0.21; // impossible : exception / bug / plantage / noob
+			console.log("coucou"); // le code a planté juste avant donc pas de coucou dans la console car une constante ne peut changer de valeur.
+		</script>
+	</body>
+</html>
