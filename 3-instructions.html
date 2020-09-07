@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JS : instructions</title>
+		<style>
+		</style>
+	</head>
+
+	<body>
+		<h1 style="">Instructions JAVASCRIPT</h1>
+		
+		<p>Javascript : un algorithme est composée d'instructions : elle sont exécutées dans les ordres les unes après les autres.</p>
+		
+		<script>
+			// opération arithmétique : + - / * et les ()
+			var somme = 10 + 4;
+			var difference = 5 - 3;
+			var produit = 3 * 3;
+			var quotient = 10/3;
+			var operation = 4 / (5 + 6) * 4 - 3;
+			
+			var somme2 = difference * quotient;
+			
+			var somme = 0;
+			
+			// ces deux lignes font exactement la même chose :
+			// elle modifie la valeur de somme en reprenant l'ancienne valeur de somme et en lui ajoutant 15
+			somme = somme + 15;
+			// écriture simplifiée pour les opérations arithmétique :
+			somme += 15;
+			
+			somme -= 5;
+			somme *= 3;
+			somme /= 7;
+			
+			// ((((0 + 15) + 15) - 5) * 3) / 7
+			console.log("Résultat du calcul de ouf : " + somme); 
+			
+			// écriture simplifiée pour incrémentation et décrémentation
+			i = 0;
+			
+			i = i + 1;
+			i += 1;
+			i++;
+			
+			i = i - 1;
+			i -= 1;
+			i--;
+			
+			
+			// chaine : concaténation
+			chaine1 = "Bonjour";
+			chaine2 = "Biloute";
+			chaine3 = chaine1 + " " + chaine2;
+			console.log(chaine3); 
+			
+			// l'une des deux parties de l'opération est une chaine :
+			// l'opérateur + fera une concaténation, et non une addition
+			console.log("50" + 3);
+			console.log(3 + "43");
+			
+			console.log(3 + 5 + " "  + 2 + 4); // "8 24"
+			console.log((3 + 5) + " + " + (2 + 4)); // 8 + 6
+			
+			// intéragir avec l'utilisateur pour lui donner 
+			age = prompt("Quel est votre âge ?");
+			// prompt renvoie forcément une chaine de caractères
+			
+			// si on veut récupérer un number, il faut forcer le type : cast
+			age = parseInt(age);
+			console.log(parseInt(age) + 10 );
+			
+			// pour transformer un number en string :
+			// String() ou .toString()
+			age = 20;
+			console.log(String(5) + age.toString());
+			
+			// pour debugger :
+			// afficher une variable dans alert() : c'est bien pourri (chaine ou entier uniquement)
+			// debugger avec console.log() : mieux et ça marche avec tout
+			// debugger avec la console en mode pas ou pas : pour ça il faut
+			// créer des points d'arrêts dans le navigateur
+			
+		</script>
+	</body>
+</html>
