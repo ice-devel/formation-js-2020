@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JS : tableaux </title>
+		<style>
+		</style>
+	</head>
+
+	<body>
+		<h1 style="">Les tableaux JAVASCRIPT</h1>
+		<p>
+			Un tableau c'est une variable qui peut contenir plusieurs valeurs,
+			et dont chaque valeur est accessible grâce à un indice (qui commence à 0).
+			
+			On peut modifier ou afficher une valeur en choississant son indice, ou alors
+			on peut afficher toutes les valeurs grâce à une boucle : on parcourt les valeurs une par une pour les afficher.
+		</p>
+		<script>
+			// déclarer un tableau (et le typer) est obligatoire en JS
+			var names = new Array();
+			var names = [];
+			names[0] = "gérard";
+			names[1] = "bashir";
+			names[5] = "toto"; // pas logique mais ça fonctionne 
+			console.log(names);
+			
+			// dans un tableau JS, on peut mettre des valeurs de différents types
+			var notes = [];
+			notes.push(10);
+			notes.push(12);
+			notes.push("5");
+			notes.push("La république c'est MOI");
+			console.log(notes);
+			alert(notes[2]);
+			
+			sum1and2 = notes[0] + notes[1];
+			
+			if (notes[0] > 5) {
+				// on rentre oui, yes, da, ja
+			}
+			
+			// afficher tous les éléments d'un tableau : parcourir avec une boucle
+			for (i = 0; i < notes.length; i++) {
+				console.log(notes[i]);
+			}
+			
+			// pondre un algo qui dit si l'humain est :
+			/*
+			- bon de naissance
+			- mauvais de naissance
+			- les deux de naissance
+			- aucun des deux de naissance
+			*/
+			
+			var users = ["user1", "user2", "user3"];
+			console.log(users);
+			
+			// un tableau peut lui-même contenir des valeurs de type tableau
+			var users = [["toto", "59000"], ["victoria", "75000"]];
+			console.log(users[1][1]);
+			
+			// en javascript on peut "afficher" un tableau, il concatène toutes les valeurs
+			// ensemble séparées par des virgules
+			document.write(users[0] + "<br>");
+			
+			for (i = 0; i < users.length; i++) {
+				document.write(users[i][0] + "-" + users[i][1] + "<br>");
+			}
+			
+			firstname = "biloute";
+			console.log(firstname[0]); // on peut accéder à un caractère dans une chaine, grâce à un indice, comme si la chaine était un tableau.
+			console.log(firstname.length);
+			
+		</script>
+	</body>
+</html>

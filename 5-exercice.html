@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JS : exercices </title>
+		<style>
+		</style>
+	</head>
+
+	<body>
+		<h1 style="">Exercice JAVASCRIPT</h1>
+		<p>
+			Exercice 1 : demander à l'utilisateur de saisir des notes
+			La saisie se termine quand il tape -1.
+			Affichez à l'écran la moyenne des notes saisies
+		</p>
+		<script>	
+			// V1 : do while
+			/*
+			var nbNotes = 0;
+			var sommeNotes = 0;
+			do {
+				var note = prompt("Saisissez une note");
+				if (note != -1) {
+					nbNotes = nbNotes + 1;
+					sommeNotes = sommeNotes + note;
+				}
+			} while(note != -1);
+			
+			var moyenne = sommeNotes / nbNotes;
+			
+			// V2 : while
+			var nbNotes = 0;
+			var sommeNotes = 0;
+			var note = prompt("Saisissez une note");
+			while (note != -1) {
+				sommeNotes = sommeNotes + note;
+				nbNotes = nbNotes + 1;
+				note = prompt("Saisissez la note suivante");
+			}
+			
+			var moyenne = sommeNotes / nbNotes;
+			*/
+			
+			// V3 : prise en compte des erreurs possibles
+			var nbNotes = 0;
+			var sommeNotes = 0;
+			var note = prompt("Saisissez une note");
+			while (note != -1) {
+				if (note >= 0 && note <= 20) {
+					sommeNotes = sommeNotes + parseInt(note);
+					nbNotes = nbNotes + 1; //nbNotes++
+					note = prompt("Saisissez la note suivante");
+				}
+				else {
+					note = prompt("Saisie incorrecte, saisissez la note suivante");
+				}
+			}
+		</script>
+	</body>
+</html>
