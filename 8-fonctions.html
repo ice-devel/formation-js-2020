@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JS : fonctions </title>
+		<style>
+		</style>
+	</head>
+
+	<body>
+		<h1 style="">Fonctions JAVASCRIPT</h1>
+		<p>
+			Une fonction est une suite d'instructions à laquelle on donne un nom, afin de pouvoir
+			l'exécuter à plusieurs endroits sans la réécrire.
+			Une fonction peut avoir des paramètres d'entrée et une valeur de retour.
+		</p>
+		
+		<script>
+			function isOfAge(age) {
+				if (age >= 18) {
+					alert('majeur');
+				}
+				else {
+					alert('mineur');
+				}
+			}
+			/*
+			age = 25;
+			
+			if (age >= 18) {
+				alert('majeur');
+			}
+			else {
+				alert('mineur');
+			}
+			
+			age2 = 34;
+			
+			if (age2 >= 18) {
+				alert('majeur');
+			}
+			else {
+				alert('mineur');
+			}
+			*/
+			
+			isOfAge(18);
+			isOfAge(14);
+			document.write(isOfAge(14)); // la fonction ne retourne rien donc on peut pas l'afficher
+			
+			function add(nb1, nb2) {
+				sum = nb1 + nb2;
+				return sum; // retourner une valeur pour pouvoir l'utiliser là où on a appelé la fonction
+			}
+			
+			add(4, 5);
+			document.write(add(10, 5));
+			
+			var result = add(14, 3);
+			document.write(result);
+			
+			function reverseWord(word) {
+				var reversedWord = ""; // variable à portée locale : utilisable uniquement dans la fonction
+				for (let i=0;i<word.length;i++) {
+					reversedWord = word[i] + reversedWord;
+				}
+				console.log(i);
+				
+				return reversedWord;
+			}
+			
+			// document.write(reversedWord); cette variable n'existe pas en dehors de la fonction
+			
+			reverseWord("salut les boys");
+			//reverseWord("couclu");
+			//reverseWord("bonjour");
+			//reverseWord("salut les girlz");
+			
+			var word = "ehfiufheiufhiui";
+			var word2 = reverseWord(word);
+			if (word == word2) {
+				// palindrome
+			}
+			
+			/*
+			* Exercice : créer une fonction qui retourne si oui ou non un mot passé en paramètre est un palindrome. Utilisez cette fonction dans le script principal pour afficher un message 
+			de votre choix.
+			*/
+			
+			
+			
+		</script>
+	</body>
+</html>
