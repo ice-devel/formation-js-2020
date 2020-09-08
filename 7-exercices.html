@@ -31,7 +31,60 @@
 			puis les comparer pour savoir si c'est un palindrome.
 			
 		</p>
-		<script>	
+		<script>
+			// exo 2 
+			var notes = [];
+			note = prompt("Saisir une note stp");
+			while (note != -1) {
+				notes.push(parseInt(note));
+				note = prompt("Saisir une note stp");
+			}
+			
+			sum = 0;
+			for (i=0;i<notes.length;i++) {
+				sum = sum + note;
+			}
+			
+			if (notes.length > 0) {
+				avg = sum / notes.length;
+				console.log(avg);
+			}
+			else {
+				console.log("T'as pas saisi de note");
+			}
+			
+			// Exo 3
+			// V1
+			var word = prompt("Saisissez un mot");
+			var i = 0;
+			isPalin = true;
+			while (i < word.length && isPalin == true) {
+				if (word[i] != word[word.length-1-i]) {
+					isPalin = false;
+				}
+				i++;
+			}
+			
+			if (isPalin) {
+				// palindrome
+			}
+			else {
+				// papalindrome
+			}
+			
+			// V2
+			var word = "test";
+			var inversedWord = "";
+			for (i=0;i<word.length;i++) {
+				inversedWord = word[i] + inversedWord;
+			}
+			
+			if (inversedWord == word) {
+				// palindrome
+			}
+			else {
+				// papalindrome
+			}
 			
 		</script>
 	</body>
