@@ -63,7 +63,6 @@
 				for (let i=0;i<word.length;i++) {
 					reversedWord = word[i] + reversedWord;
 				}
-				console.log(i);
 				
 				return reversedWord;
 			}
@@ -84,6 +83,76 @@
 			/*
 			* Exercice : créer une fonction qui retourne si oui ou non un mot passé en paramètre est un palindrome. Utilisez cette fonction dans le script principal pour afficher un message de votre choix.
 			*/
+			function isPalindrome(word) {
+				var reversedWord = "";
+				for (let i=0;i<word.length;i++) {
+					reversedWord = word[i] + reversedWord;
+				}
+				
+				// V1
+				var isPalin;
+				if (reversedWord == word) {
+					isPalin = true;
+				}
+				else {
+					isPalin = false;
+				}
+				return isPalin;
+				
+				// V2
+				if (reversedWord == word) {
+					return true;
+				}
+				else {
+					return false;
+				}
+				
+				// V3
+				isPalin = reversedWord == word;
+				return isPalin;
+				
+				// V4
+				return reversedWord == word;
+			}
+			
+			var myWord = "Bonjour";
+			if (isPalindrome(myWord)) {
+				document.writeln("C'est un palindrome");
+			}
+			else {
+				document.writeln("C'est pas un palindrome");
+			}
+			
+			/*
+			* Exercice : créer une fonction qui prend un tableau (entier) en paramètre 
+			et qui retourne la valeur la plus petite se trouvant dans ce tableau.
+			Pour montrer que vous avez compris, utilisez cette fonction dans un script principal
+			*/
+			function min(tab) { // "signature"
+				// ici c'est le "corps"
+				var minimum = tab[0];
+				for (toto=0;toto<tab.length;toto++) {
+					if (tab[toto] < minimum) {
+						minimum = tab[toto];
+					}
+				}
+				
+				return minimum;
+			}
+			
+			//var notes = [];
+			var notes = [12, 14, 11, 4];
+			var noteMinimum = min(notes);
+			document.writeln(noteMinimum);
+				
+			var ages = [12, 18, 24, 4];
+			const AGE_MINIMUM = min(ages);
+			
+			if (AGE_MINIMUM < 18) {
+				document.write("Il y a au moins une personne mineure dans ta famille");
+			}			
+			
+			
 			
 			
 			

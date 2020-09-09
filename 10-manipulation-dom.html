@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Manipulation</title>
+		<style>
+		</style>
+	</head>
+
+	<body>
+		<h1 id="main-title" >Manipulation du DOM</h1>
+		<p class="bold italic">
+			DOM : Document Object Model
+		</p>
+		<h2>Sélecteurs</h2>
+		<p>
+			<ul>
+				<li class="bold">
+					<span class="bold">Par identifiant</span>
+				</li>
+				<li class="italic">Par classe</li>
+				<li>Par tag</li>
+			</ul>
+				
+		</p>
+		<h2>Propriétés</h2>
+		<p>
+			<ul>
+				<li class="bold">
+					<span class="bold">style</span>
+				</li>
+				<li class="italic">évenement</li>
+			</ul>
+		</p>
+		
+		<button id="btn-italic">Cliquez-moi</button>
+		
+		<form id="form-name">
+			<label>Veuillez saisir votre nom</label>
+			<input id="input-name" type="text" />
+			<input type="submit" value="Valider" />
+		</form>
+		
+		<p id="result-form">
+		</p>
+		
+		<script>
+			/* grâce au DOM, on peut en JS intéragir avec le HTML : 
+				1- selectionner un ou plusieurs éléments
+				2- on intéragit
+			*/
+			
+			/* sélection d'éléments : avant (anciens sélecteurs) */
+			var title = document.getElementById("main-title");
+			var boldedElements = document.getElementsByClassName("bold");
+			var h2s = document.getElementsByTagName("h2");
+			
+			var nullElement = document.getElementById("not-existing-id");
+			
+			console.log(title);
+			console.log(boldedElements);
+			console.log(h2s);
+			console.log(nullElement);
+			
+			/* sélection d'éléments : dernières méthodes à préférer (à la date de ce cours) 
+				on utilise les sélecteurs CSS avec 
+				- querySelector : pour récupérer 1 seul élément (ou zéro donc null)
+				- querySelectorAll: pour récupérer un tableau d'élément (avec 0, 1 ou plusieurs)
+			
+			*/
+			var title = document.querySelector("#main-title");
+			var boldedElements = document.querySelectorAll(".bold");
+			var h2s = document.querySelectorAll("h2");
+			var boldedLis = document.querySelectorAll("li.bold");
+			
+			console.log(title);
+			console.log(boldedElements);
+			console.log(h2s);
+			console.log(boldedLis);
+			
+			// intéragir avec un seul élément
+			title.style.color = "#c11111";
+			title.style.fontSize = "3em"; // pour les propriétés css avec un tiret, il faut le remplacer avec du camelCase
+			
+			// intéragir avec un tableau d'éléments
+			// boldedElements.style.fontWeight = "bold"; on ne mets du style sur un tableau mais sur les tableaux qui se trouvent dedans
+			for (let i = 0;i < boldedElements.length;i++) {
+				boldedElements[i].style.fontWeight = "bold";
+			}
+			
+			
+			// récupérer un button, écouter le clic sur ce bouton
+			// et déclencher du code au moment du clic
+			var btnItalic = document.querySelector("#btn-italic");
+			
+			// écouter un evenement : 
+			/*
+				1er : le nom de l'événement (https://developer.mozilla.org/fr/docs/Web/Events)
+				2em : callback : fonction qui est appelée quand l'évenement se produit
+			*/
+			btnItalic.addEventListener('click', function() {
+				var italicElements = document.querySelectorAll(".italic");
+				for (let i = 0;i < italicElements.length;i++) {
+					italicElements[i].style.fontStyle = "italic";
+				}
+			});
+			
+			// écouter la soumission d'un formulaire (et l'empecher pour éviter que la page ne se recharge)
+			var formName = document.querySelector("#form-name");
+			formName.addEventListener('submit', function(event) {
+				// event est une variable automatiquement remplei par javascript
+				event.preventDefault(); // on annule l'evenement submit : le formulaire n'est plus soumis et la page ne se recharge plus
+			
+				// console.log(event);
+				
+				var inputName = document.querySelector("#input-name");
+				// .value pour accéder la valeur d'un champ de valeur
+				var name = inputName.value; 
+				
+				var pResult = document.querySelector("#result-form");
+				// .innerHTML pour accéder au contenu HTML d'une élément HTML
+				pResult.innerHTML = "Bonjour " + name;
+			});
+			
+		</script>
+	</body>
+</html>
