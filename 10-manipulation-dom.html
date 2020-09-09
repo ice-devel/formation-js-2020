@@ -88,15 +88,22 @@
 			}
 			
 			
+			
+			// écouter un evenement : 
+			/*
+				- I : sélectionner l'élément avec querySelector
+				- II : ecouter un évenement 
+				- III : écrire la fonction qui se déclenche quand l'évenement se produit
+				
+				Paramètre de la fonction addEventListener :
+				1er : le nom de l'événement (https://developer.mozilla.org/fr/docs/Web/Events)
+				2em : callback : fonction qui est appelée quand l'évenement se produit
+			*/
+			
 			// récupérer un button, écouter le clic sur ce bouton
 			// et déclencher du code au moment du clic
 			var btnItalic = document.querySelector("#btn-italic");
 			
-			// écouter un evenement : 
-			/*
-				1er : le nom de l'événement (https://developer.mozilla.org/fr/docs/Web/Events)
-				2em : callback : fonction qui est appelée quand l'évenement se produit
-			*/
 			btnItalic.addEventListener('click', function() {
 				var italicElements = document.querySelectorAll(".italic");
 				for (let i = 0;i < italicElements.length;i++) {
@@ -107,7 +114,7 @@
 			// écouter la soumission d'un formulaire (et l'empecher pour éviter que la page ne se recharge)
 			var formName = document.querySelector("#form-name");
 			formName.addEventListener('submit', function(event) {
-				// event est une variable automatiquement remplei par javascript
+				// event est une variable automatiquement remplie par javascript
 				event.preventDefault(); // on annule l'evenement submit : le formulaire n'est plus soumis et la page ne se recharge plus
 			
 				// console.log(event);

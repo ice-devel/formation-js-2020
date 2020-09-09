@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Evenement</title>
+		<style>
+		</style>
+	</head>
+
+	<body>
+		<h1 id="main-title" style="">Evenement JS</h1>
+		<h2 onclick="alert('prout')">Clique</h2>
+		
+		<div>Conteneur de div créé dynamiquement :
+			<div id="container-new-div">
+			
+			</div>			
+		</div>
+		
+		<p>P1</p>
+		<p>P2</p>
+		<p>P3</p>
+		
+		<button id="btn-add-div">Ajouter un div</button>
+		
+		<script>
+		
+			/**
+				On peut mettre une fonction dans une variable
+			*/
+			var maFct = function() {console.log("hey");};
+			maFct();
+			
+			/* 
+				Ecouter un evenement et déclencher une fonction
+			*/
+			// écouter un evenement : 
+			/*
+				- I : sélectionner l'élément avec querySelector
+				- II : ecouter un évenement 
+				- III : écrire la fonction qui se déclenche quand l'évenement se produit
+				
+				Paramètre de la fonction addEventListener :
+				1er : le nom de l'événement (https://developer.mozilla.org/fr/docs/Web/Events)
+				2em : callback : fonction qui est appelée quand l'évenement se produit
+			*/
+			
+			
+			// DOM-0
+			var mainH1 = document.querySelector("#main-title");
+			mainH1.onclick = function() { alert("t'as cliqué sur le h1"); };
+			// si on redéfinit la propriété onclick, on écrase la première fonction
+			mainH1.onclick = function() { alert("t'as cliqué sur le h1 ma gueule"); };
+			
+			// DOM-2 : avec le addEventListener, on n'écrase pas, on cumule
+			mainH1.addEventListener('click', function() { alert("t'as cliqué avec DOM-2"); });
+			mainH1.addEventListener('click', function() { alert("t'as cliqué avec DOM-2 - part 2"); });
+			
+		
+			// autre écriture du callback
+			function sayHello() {
+				alert('Hello');
+			}
+			
+			mainH1.addEventListener('click', sayHello);
+			
+			// récupérer tous les paragraphes
+			var ps = document.querySelectorAll("p");
+			
+			function changeColor() {
+				// pour récupérer un élément dans un callback (celui a déclenché l'évenement)
+				// il faut utiliser le mot-clé "this"
+				
+				// changer la couleur de CE paragraphe qui a été cliqué
+				this.style.color = "red";
+			}
+			
+		
+			// mettre un écouteur sur chacun des paragraphes
+			for (i=0;i<ps.length;i++) {
+				ps[i].addEventListener('click', changeColor);
+			}
+			
+			// écouter le bouton d'ajout pour créer un div dans la page lors du click sur ce bouton
+			var btnAddDiv = document.querySelector("#btn-add-div");
+			btnAddDiv.addEventListener('click', function() {
+				// création d'un élément HTML en mémoire
+				 var newDiv = document.createElement("div");
+				 
+				 // mettre des valeurs pour les propriétés souhaitées
+				 newDiv.style.border = "1px solid #000000";
+				 newDiv.style.padding = "20px";
+				 newDiv.style.color = "red";
+				 newDiv.innerHTML = "Bonjour je suis un nouveau div";
+				 newDiv.addEventListener('click', function() {alert("Vous avez cliqué sur un div créé dynamiquement")});
+				 
+				 
+				 // insérer un élément html dans le body
+				 //document.body.appendChild(newDiv);
+				 
+				 // insérer un élément html dans un autre html
+				 var containerDiv = document.querySelector("#container-new-div");
+				 containerDiv.appendChild(newDiv);
+			});
+		</script>
+	</body>
+</html>
