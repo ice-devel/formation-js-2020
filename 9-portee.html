@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JS : portées des variables </title>
+		<style>
+		</style>
+	</head>
+
+	<body>
+		<h1 style="">Portées variables JAVASCRIPT</h1>
+		
+		<p>
+			Les variables ont une portée : c'est l'espace de code où elle peuvent être utilisées.
+			Il y a deux types de portée en JS : locale et globale.
+		</p>
+		
+		<script>
+			var x; // variable globale car déclarée dans le script principal (plus haut niveau du script) : elle utilisable partout dans le code.
+			var y;
+			
+			x = 3;
+			y = 5;
+			z = 8; // la déclaration n'a pas faite explicitement pour z, mais c'est bien une variable globale.
+			
+			function sayHello() {
+				var a; // variable locale : cette variable a n'est utilisable que dans la fonction
+				a = 9;
+				document.writeln("a de sayHello1 : " + a + "<br>");
+				document.writeln("x de sayHello1 : " + x + "<br>");
+				document.writeln("Hello" + "<br>");
+			}
+			
+			function sayHello2() {
+				document.writeln("a : " + a + "<br>"); // la variable n'est pas définie ici, elle ne l'est que dans la fonction sayHello()
+				document.writeln("Hello");
+			}
+			
+			function sayHello3() {
+				x = "coucou"; // ici on modifie la variable globale définie à la ligne 21
+				document.writeln("x de sayHello3 : " + x + "<br>");
+			}
+			
+			function sayHello4() {
+				var x = "arbre"; // cette variable est locale : en la déclarant explicitement
+				// on utilise pas la variable globale définie à la ligne mais une nouvelle référence en mémoire
+				document.writeln("x de sayHello4 : " + x + "<br>");
+			}
+			
+			function sayHello5() {
+				var x = 66;
+				let y = 70; // variable locale, on a pas touché à la variable globale de la ligne 22
+				var z = 99;
+				
+				if (x > 50) {
+					var x = 40; // on réutilise la même variable que ligne 50
+					let y = 30; // on ne modifie pas le y de la ligne 51
+					let z = 20; // on ne modifie pas le z de la ligne 52
+					document.writeln("x1 de sayHello5 : " + x + "<br>");
+					document.writeln("y1 de sayHello5 : " + y + "<br>");
+					document.writeln("z1 de sayHello5 : " + z + "<br>");
+				}
+				
+				document.writeln("x2 de sayHello5 : " + x + "<br>");
+				document.writeln("y2 de sayHello5 : " + y + "<br>");
+				document.writeln("z2 de sayHello5 : " + z + "<br>");
+			}
+			
+			/*
+			Attention : écrire une fonction avec un nom déjà utilisé par une autre fonction,
+			va écraser la première fonction
+			function sayHello() {
+				alert('coucou');
+			}
+			*/
+			sayHello();
+			// sayHello2(); // ça va planter car variable "a" pas définie dans la fonction
+			sayHello3();
+			sayHello();
+			sayHello4();
+			sayHello();
+			sayHello5();
+			document.writeln("y global : " + y + "<br>");
+			
+			// document.writeln("a : " + a); // ça plante  car la variable "a" n'est pas définie ici, elle ne l'est que dans la fonction sayHello()
+			
+			var i = 99;
+			
+			for (let i = 0; i<10;i++) {
+				console.log(i); // le i du FOR ne touche pas au i global ligne 88
+				if (true) {
+					let i = 40;
+					console.log(i); // le i du IF ne touche au i du FOR
+				}
+			}
+			
+			alert(i); // le i de la ligne
+		</script>
+	</body>
+</html>
