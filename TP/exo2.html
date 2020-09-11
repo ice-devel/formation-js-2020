@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Exo 2</title>
+	</head>
+
+	<body>
+		<p>
+		Créez une page web avec :
+        - un champ texte
+        - un bouton "enregistrer"
+        - un bouton "afficher"
+        - un bouton "supprimer"
+
+Créez un script javascript qui :
+- lors du clic sur le bouton "enregistrer", insère le contenu du champ texte dans une variable de type tableau. Chaque nouvelle entrée doit être placée à la fin de ce tableau. Le champ texte doit se vider automatiquement lorsque la valeur a bien été ajoutée dans ce tableau.
+- lors du clic sur le bouton "supprimer", cherche dans cette variable tableau si une valeur correspond au contenu du champ, et supprime cette valeur du tableau si elle existe. Sinon afficher un message précisant que la valeur n'existe pas dans le tableau.
+- lors du clic sur le bouton "afficher" :
+crée dynamiquement un élément div et l’insère dans la page où vous voulez
+affiche toutes les valeurs de la variable tableau dans ce nouvel élément HTML, avec une saut de ligne entre chaque valeur
+		</p>
+		
+		<input type="text" id="input1"/>
+		<button id="btn-save">Enregistrer</button>
+		<button id="btn-display">Afficher</button>
+		<button id="btn-remove">Supprimer</button>
+		
+		<script>
+			var listValues = [];
+				
+			// écouter le clic sur le bouton enregistrer
+			var btnSave = document.querySelector("#btn-save");
+			btnSave.addEventListener('click', function() {
+				// récupérer la valeur dans le champ texte
+				var input = document.querySelector('#input1');
+				var value = input.value;
+				
+				// on ajoute la nouvelle dans la variable globale listValues
+				listValues.push(value);
+				console.log(listValues);
+			});
+			
+			// écouter le clic sur le bouton supprimer
+			var btnRemove = document.querySelector("#btn-remove");
+			btnRemove.addEventListener('click', function() {
+				// récupérer la valeur dans le champ texte
+				var input = document.querySelector('#input1');
+				var value = input.value;
+				
+				// trouver l'index de cette valeur dans le tableau (cette fonction
+				// retourne -1 si cette valeur n'est pas trouvée)
+				var index = listValues.indexOf(value);
+				
+				if (index != -1) {
+					// si la valeur est trouvée, on supprime cet élément
+					listValues.splice(index, 1);
+					console.log(listValues);
+				}
+				else {
+					alert('La valeur n\'est pas dans le tableau');
+				}
+			});
+			
+			// écouter le clic sur le bouton AFFICHER
+			var btnDisplay = document.querySelector("#btn-display");
+			btnDisplay.addEventListener('click', function() {
+				// crée en mémoire un élement html div
+				var newDiv = document.createElement("div");
+				newDiv.style.border = "1px solid black";
+				
+				// on l'insère dans la page
+				document.body.appendChild(newDiv);
+				
+				// ajouter le texte correspondant aux éléments du tableau listValues
+				for (i=0;i<listValues.length;i++) {
+					newDiv.innerHTML = newDiv.innerHTML + listValues[i] + "<br>";
+				}
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Exo 1</title>
+	</head>
+
+	<body>
+		<p>
+		Créez une page web avec deux champs texte, et un bouton valider.
+		Créez le script Javascript qui réalise une multiplication entre les contenus des deux champs texte.
+		Afficher le résultat dans la page web ou dans une fenêtre d'alerte.
+		Si l'un des deux champs texte ne contient pas une valeur numérique au moment du clic sur le bouton valider, prévenir l'utilisateur de saisir une valeur numérique correcte.
+		</p>
+		
+		<input type="text" id="value1"/>
+		<input type="text" id="value2"/>
+		<button>Valider</button>
+		
+		<script>
+			var btnMult = document.querySelector("button");
+			btnMult.addEventListener('click', function() {
+				// récupération des champs en JS
+				var input1 = document.querySelector('#value1');
+				var input2 = document.querySelector('#value2');
+				
+				// récupération les valeurs dans ces champs
+				var nb1 = input1.value;
+				var nb2 = input2.value;
+				
+				// vérifier que les deux valeurs sont bien des nombres (avec la fonction isNaN par exemple)
+				if (isNaN(nb1) == false && !isNaN(nb2)) {
+					// réaliser la multiplication entre ces deux valeurs
+					var result = nb1 * nb2;
+					
+					// afficher le résultat
+					alert("Résultat " + result);
+				}
+				else {
+					alert("Saisissez des nombres corrects");
+				}
+				
+				
+			});
+		</script>
+	</body>
+</html>

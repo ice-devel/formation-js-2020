@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Exo 2</title>
+	</head>
+
+	<body>
+		<p>
+	Exercice 3:
+
+Créez une page web avec un formulaire qui contient :
+        - des boutons radio pour choisir une civilité : "Mme" ou "M."
+        - un champ texte "prenom"
+        - un champ texte "email"
+        - une liste déroulante pour choisir le pays de naissance (avec juste 3 pays par exemple)
+        - un champ numérique "salaire"
+        - un bouton valider de type submit
+	Puis qui contient un tableau HTML (table) vide.
+
+	Créer un script javascript :
+        - au moment de la validation du formulaire, le script doit empêcher la page de se recharger, puis doit récupérer toutes les données du formulaire pour les mettre dans des variables javascript. Le script doit vérifier que chaque champ est rempli, et sinon informer l’internaute qu’il y a une erreur.
+
+        - ajoute dans le tableau HTML une ligne (<tr>) avec toutes les informations du nouvel utilisateur (une colonne par champ), en lui affectant en plus un identifiant unique généré aléatoirement (moteur de recherche :))
+
+        - réinitialise le formulaire ensuite.        
+
+		Le style des éléments et leur placement dans la page web n'ont aucune importante.
+		</p>
+		
+		<form id="form" action="" method="post">
+		  <p>Vous êtes : </p>
+			<input id="radioMr" type="radio" name="civilite" value="Mr">MONSIEUR<br>
+			<input id="radioMme" type="radio" name="civilite" value="Mme">MADAME<br>
+
+			<br>
+			<br>
+
+			<input id="champsPrenom" type="text" name="prenomUser" placeholder="Votre prenom">
+			<input id="champsEmail" type="email" name="emailUser" placeholder="Votre email">
+
+			<br>
+			<br>
+
+			<select name="PaysUser" id="select_pays">
+				<option value="">Choisissez votre pays</option>
+				<option value="fr">France</option>
+				<option value="Ang">Angleterre</option>
+				<option value="All">Allemagne</option>
+			</select>
+
+			<br>
+			<br>
+
+			<input id="champsSalaire" type="number" name="salaireUser" placeholder="Votre salaire">
+			<br>
+			<br>
+			<input id="btnEnvoyer" type="submit" value="Envoyer">
+		</form>
+		
+		<table id="table-users">
+		</table>
+		
+		<script>
+			var form = document.querySelector("#form");
+			form.addEventListener("submit", function(e) {
+				// annuler l'évenement afin d'éviter à la page de se recharger
+				e.preventDefault();
+				
+				// récupérer tous les champs un par un, pour accéder à leur valeur
+				var inputName = document.querySelector("#champsPrenom");
+				var name = inputName.value;
+				
+				var inputEmail = document.querySelector("#champsEmail");
+				var email = inputEmail.value;
+				
+				var inputSalaire = document.querySelector("#champsSalaire");
+				var salaire = inputSalaire.value;
+				
+				// récupérer la valeur du bouton radio (uniquement celui qui est coché)
+				var inputCivilite = document.querySelector("input[name='civilite']:checked");
+				var civilite = "";
+				if (inputCivilite != null) {
+					civilite = inputCivilite.value;
+				}
+				
+				var selectPays = document.querySelector("#select_pays");
+				var pays = selectPays.value;
+				
+				if (name != "" && email != "" && salaire != "" && civilite != "" && pays != "") {
+					// tous les champs sont remplis
+					
+					// ajouter l'utilisateur dans le tableau HTML
+					// on crée une ligne html en mémoire
+					var newLine = document.createElement('tr');
+					
+					// on crée les cellules pour cette ligne en mémoire
+					
+					// v1 avec createElement
+					var newCellId = document.createElement('td');
+					// on place le texte correspond dans la cellulle
+					newCellId.innerHTML = getUniqId();
+					// on place la cellule dans la ligne
+					newLine.appendChild(newCellId);
+					
+					var newCellCivilite = document.createElement('td');
+					newCellCivilite.innerHTML = civilite;
+					newLine.appendChild(newCellCivilite);
+						
+					var newCellName = document.createElement('td');
+					// on place le texte correspond dans la cellulle
+					newCellName.innerHTML = name;
+					// on place la cellule dans la ligne
+					newLine.appendChild(newCellName);
+					
+					var newCellEmail = document.createElement('td');
+					newCellEmail.innerHTML = email;
+					newLine.appendChild(newCellEmail);
+					
+					var newCellSalaire = document.createElement('td');
+					newCellSalaire.innerHTML = salaire;
+					newLine.appendChild(newCellSalaire);
+					
+					var newCellPays = document.createElement('td');
+					newCellPays.innerHTML = pays;
+					newLine.appendChild(newCellPays);
+					
+					// on insère le tr dans le table
+					var tableUsers = document.querySelector("#table-users");
+					tableUsers.appendChild(newLine);
+					
+					// v2 : avec le innerHTML directement
+					/*
+					tableUsers.innerHTML = tableUsers.innerHTML + "<tr><td>" + getUniqId() + "</td><td>" + civilite + "</td><td>" + name + "</td><td>" + email + "</td><td>" + pays + "</td><td>" + salaire + "</td></tr>";
+					*/
+					
+					form.reset();
+				}
+				else {
+					alert('Veuillez remplir tous les champs');
+				}
+				
+				
+			});
+			
+			function getUniqId() {
+				return Math.random().toString(36).substr(2, 9);
+			}
+		</script>
+	</body>
+</html>
